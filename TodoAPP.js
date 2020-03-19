@@ -1,6 +1,7 @@
 console.clear();
 
 const Title = ({count}) => {
+	//make a count variable showing the number of entries display alongside the title
   return ( 
 		<div>
 			<div>
@@ -12,6 +13,7 @@ const Title = ({count}) => {
 	
 const Todoform = {addtodo} => {
 	let Inputrack;
+	//The form adds the inputed value to the todolist on submit; a ref created for the input value 
 	return (
 		<form onsubmit = {(e) => {
 		 e.preventdefault();
@@ -27,9 +29,11 @@ const Todoform = {addtodo} => {
   };
   
  const Todo = {todo, remove} => {
+	 //This for each todo item and can be removed with a click
 	return (<a href="#" classname = "each-todo-item" onclick = {() => {remove(todo.id)}}>{todo.text}</a>;
  }
  const Todolist = {source, remove} => {
+	 //Maps from a source and renders each child component as a Todo component
 	const Todosfromsource = source.map ((mappedsource) => {
 	return (
 	  <Todo todo={mappedsource} key={mappedsource.id} remove={remove} />
@@ -50,6 +54,7 @@ const Todoform = {addtodo} => {
 	}
 	
 	ComponentDidMount{
+		//use the mock api on mounting
 	    axios.get(this.apiUrl)
        .then((res) => {
 			this.setstate({data: res.data});
